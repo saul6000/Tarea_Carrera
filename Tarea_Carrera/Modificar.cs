@@ -31,7 +31,15 @@ namespace Tarea_Carrera
                 Tarea_Carrera.Modelo.datosCarrera carrera=new Tarea_Carrera.Modelo.datosCarrera();
                 carrera.Codigo = txtcodigo.Text;
                 carrera.Carrera = txtcarrera.Text;
-                carrera.duracion = int.Parse(txtduracion.Text);
+                if (int.Parse(txtduracion.Text) <= 5)
+                {
+                    carrera.duracion = int.Parse(txtduracion.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Formato no Aceptado");
+                    return;
+                }
                 carrera.facultad = cmbFacultad.Text;
                 carrera.otorga = txtotorga.Text;
 
@@ -55,6 +63,11 @@ namespace Tarea_Carrera
 
                 this.Close();
             }
+        }
+
+        private void btbcerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

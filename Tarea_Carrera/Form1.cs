@@ -28,7 +28,8 @@ namespace Tarea_Carrera
                 carrera.Codigo = txtcodigo.Text;
                 carrera.Carrera = txtcarrera.Text;
                 carrera.otorga = txtotorga.Text;
-                if (carrera.duracion <= 5)
+                
+                if (int.Parse(txtduracion.Text) <= 5)
                 {
                     carrera.duracion = int.Parse(txtduracion.Text);
                 }
@@ -113,6 +114,11 @@ namespace Tarea_Carrera
 
                 }
             }
+        }
+
+        private void btbCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
