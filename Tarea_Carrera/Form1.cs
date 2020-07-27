@@ -29,7 +29,7 @@ namespace Tarea_Carrera
                 carrera.Carrera = txtcarrera.Text;
                 carrera.otorga = txtotorga.Text;
                 
-                if (int.Parse(txtduracion.Text) <= 5)
+                if (int.Parse(txtduracion.Text) >=1 && int.Parse(txtduracion.Text) <= 5)
                 {
                     carrera.duracion = int.Parse(txtduracion.Text);
                 }

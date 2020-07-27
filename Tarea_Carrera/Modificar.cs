@@ -31,7 +31,7 @@ namespace Tarea_Carrera
                 Tarea_Carrera.Modelo.datosCarrera carrera=new Tarea_Carrera.Modelo.datosCarrera();
                 carrera.Codigo = txtcodigo.Text;
                 carrera.Carrera = txtcarrera.Text;
-                if (int.Parse(txtduracion.Text) <= 5)
+                if (int.Parse(txtduracion.Text) >= 1 && int.Parse(txtduracion.Text) <= 5)
                 {
                     carrera.duracion = int.Parse(txtduracion.Text);
                 }
