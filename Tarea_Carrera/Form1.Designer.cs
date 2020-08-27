@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.txtcarrera = new System.Windows.Forms.TextBox();
             this.txtotorga = new System.Windows.Forms.TextBox();
-            this.txtduracion = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,6 +40,14 @@
             this.btbGuardar = new System.Windows.Forms.Button();
             this.btbCerrar = new System.Windows.Forms.Button();
             this.time = new System.Windows.Forms.DateTimePicker();
+            this.dependencia = new System.Windows.Forms.ComboBox();
+            this.mendozaDependenciaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new Tarea_Carrera.DataSet1();
+            this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mendoza_DependenciaTableAdapter = new Tarea_Carrera.DataSet1TableAdapters.Mendoza_DependenciaTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.mendozaDependenciaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtcodigo
@@ -65,14 +73,6 @@
             this.txtotorga.Name = "txtotorga";
             this.txtotorga.Size = new System.Drawing.Size(257, 22);
             this.txtotorga.TabIndex = 2;
-            // 
-            // txtduracion
-            // 
-            this.txtduracion.Location = new System.Drawing.Point(202, 185);
-            this.txtduracion.MaxLength = 50;
-            this.txtduracion.Name = "txtduracion";
-            this.txtduracion.Size = new System.Drawing.Size(257, 22);
-            this.txtduracion.TabIndex = 3;
             // 
             // label1
             // 
@@ -146,11 +146,43 @@
             this.time.Size = new System.Drawing.Size(200, 22);
             this.time.TabIndex = 14;
             // 
+            // dependencia
+            // 
+            this.dependencia.DataSource = this.mendozaDependenciaBindingSource;
+            this.dependencia.DisplayMember = "dependencia";
+            this.dependencia.FormattingEnabled = true;
+            this.dependencia.Location = new System.Drawing.Point(202, 193);
+            this.dependencia.Name = "dependencia";
+            this.dependencia.Size = new System.Drawing.Size(257, 24);
+            this.dependencia.TabIndex = 15;
+            this.dependencia.ValueMember = "codDependencia";
+            this.dependencia.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // mendozaDependenciaBindingSource
+            // 
+            this.mendozaDependenciaBindingSource.DataMember = "Mendoza_Dependencia";
+            this.mendozaDependenciaBindingSource.DataSource = this.dataSet1;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataSet1BindingSource
+            // 
+            this.dataSet1BindingSource.DataSource = this.dataSet1;
+            this.dataSet1BindingSource.Position = 0;
+            // 
+            // mendoza_DependenciaTableAdapter
+            // 
+            this.mendoza_DependenciaTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 359);
+            this.Controls.Add(this.dependencia);
             this.Controls.Add(this.time);
             this.Controls.Add(this.btbCerrar);
             this.Controls.Add(this.btbGuardar);
@@ -159,13 +191,15 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtduracion);
             this.Controls.Add(this.txtotorga);
             this.Controls.Add(this.txtcarrera);
             this.Controls.Add(this.txtcodigo);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.mendozaDependenciaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,7 +210,6 @@
         private System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.TextBox txtcarrera;
         private System.Windows.Forms.TextBox txtotorga;
-        private System.Windows.Forms.TextBox txtduracion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -185,6 +218,11 @@
         private System.Windows.Forms.Button btbGuardar;
         private System.Windows.Forms.Button btbCerrar;
         private System.Windows.Forms.DateTimePicker time;
+        private DataSet1 dataSet1;
+        private System.Windows.Forms.BindingSource dataSet1BindingSource;
+        private System.Windows.Forms.ComboBox dependencia;
+        private System.Windows.Forms.BindingSource mendozaDependenciaBindingSource;
+        private DataSet1TableAdapters.Mendoza_DependenciaTableAdapter mendoza_DependenciaTableAdapter;
     }
 }
 

@@ -28,7 +28,7 @@ namespace Tarea_Carrera
                 carrera.Docente = int.Parse(txtcodigo.Text);
                 carrera.apellidos = txtcarrera.Text;
                 carrera.nombres= txtotorga.Text;
-                carrera.codDependencia = txtduracion.Text;         
+                carrera.codDependencia = dependencia.Text;         
                 carrera.fechaIngreso=time.Value;
                 if (Tarea_Carrera.Modelo.datosCarrerasDAO.existecodigo(this.txtcodigo.Text))
                 {
@@ -61,6 +61,8 @@ namespace Tarea_Carrera
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dataSet1.Mendoza_Dependencia' Puede moverla o quitarla según sea necesario.
+            this.mendoza_DependenciaTableAdapter.Fill(this.dataSet1.Mendoza_Dependencia);
             this.cargargridcarrera();
         }
 
@@ -74,6 +76,11 @@ namespace Tarea_Carrera
         private void btbCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

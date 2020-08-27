@@ -16,7 +16,7 @@ namespace Tarea_Carrera
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Tarea_Carrera.Informe.informeDocente());
         }
     }
 }
