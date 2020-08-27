@@ -25,20 +25,11 @@ namespace Tarea_Carrera
           
             try
             {
-                carrera.Codigo = txtcodigo.Text;
-                carrera.Carrera = txtcarrera.Text;
-                carrera.otorga = txtotorga.Text;
-                
-                if (int.Parse(txtduracion.Text) >=1 && int.Parse(txtduracion.Text) <= 5)
-                {
-                    carrera.duracion = int.Parse(txtduracion.Text);
-                }
-                else
-                {
-                    MessageBox.Show("Formato no Aceptado");
-                    return;
-                }
-                carrera.facultad=cmbFacultad.Text;
+                carrera.Docente = int.Parse(txtcodigo.Text);
+                carrera.apellidos = txtcarrera.Text;
+                carrera.nombres= txtotorga.Text;
+                carrera.codDependencia = txtduracion.Text;         
+                carrera.fechaIngreso=time.Value;
                 if (Tarea_Carrera.Modelo.datosCarrerasDAO.existecodigo(this.txtcodigo.Text))
                 {
                     MessageBox.Show("Este Codigo ya existe");
@@ -65,8 +56,7 @@ namespace Tarea_Carrera
         }
         private void cargargridcarrera()
         {
-            DataTable dt = Tarea_Carrera.Modelo.datosCarrerasDAO.getAll();
-            this.djcarrera.DataSource = dt;
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -76,44 +66,9 @@ namespace Tarea_Carrera
 
         private void djcarrera_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView grid = (DataGridView)sender;
-            int fila = e.RowIndex;
-            string carrera = djcarrera[3, fila].Value.ToString();
+            
 
-            if (grid.Columns[e.ColumnIndex].Name == "linkEliminar")
-            {
-                // MessageBox.Show("Fila: " + fila.ToString() + ", col: " + col.ToString());
-                string codgio = djcarrera[2, fila].Value.ToString();
-                string confirmMessage = string.Format("¿Está seguro de que desea eliminar la carrera  de " + " " + carrera + "?"
-                    , grid.Rows[fila].Cells[2].Value);
-                if (MessageBox.Show(confirmMessage, "Eliminar Materia", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    MessageBox.Show("Materia Eliminada Exitosamente");
-                    grid.Rows.RemoveAt(fila);
-                    int x = Tarea_Carrera.Modelo.datosCarrerasDAO.btbdelete(codgio);
-                }
-
-
-            }
-            if (grid.Columns[e.ColumnIndex].Name == "linkModificar")
-            {
-
-                // MessageBox.Show("Fila: " + fila.ToString() + ", col: " + col.ToString());
-                string codgio = djcarrera[2, fila].Value.ToString();
-
-                string confirmMessage = string.Format("¿Está seguro de que desea Modificar  la carrera de " + " " + carrera + "?"
-                    , grid.Rows[fila].Cells[2].Value);
-                if (MessageBox.Show(confirmMessage, "Modficar Materia", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    datosCarrera H = Tarea_Carrera.Modelo.datosCarrerasDAO.getcarrera(codgio);
-                    Modificar modificar = new Modificar(H);
-                    modificar.ShowDialog();
-                    cargargridcarrera();
-
-
-
-                }
-            }
+           
         }
 
         private void btbCerrar_Click(object sender, EventArgs e)
